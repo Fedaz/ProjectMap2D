@@ -5,23 +5,17 @@ using UnityEngine;
 public class Grid : MonoBehaviour {
 
     public Transform tilePrefab;
-    public Vector2 mapSize;
-
-    public void Start()
-    {
-        GenerateMap();
-    }
+    public Vector3 mapSize;
  
     public void GenerateMap()
     {
-        for (int x = 0; x < mapSize.x; x++)
+        for (int i = 0; i < mapSize.x; i++)
         {
-            for (int y = 0; y < mapSize.y; y++)
+            for (int j = 0; j < mapSize.y; j++)
             {
-                Vector3 tilePosition = new Vector3(-mapSize.x / 2 + 0.5f + x, 0, -mapSize.y + 0.5f + y);
-                Transform newTile = Instantiate(tilePrefab, tilePosition, Quaternion.Euler(Vector3.right * 90)) as Transform;
+                Vector3 tilePosition = new Vector3(-mapSize.x / 2 + 0.5f + i, -mapSize.y + 0.5f + j ,0);
+                Transform newTile = Instantiate(tilePrefab, tilePosition, Quaternion.Euler(Vector3.right), transform);
             }
         }
     }
-
 }
